@@ -20,10 +20,10 @@ namespace TravelRecordApp
 
         private void ToolbarItem_Clicked(object sender, EventArgs e)
         {
-            Post post = new Post();
+            Post post = new Post()
             {
-                post.Experience = experienceEntry.Text;
-            }
+                Experience = experienceEntry.Text
+            };
 
             SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation);
             conn.CreateTable<Post>();

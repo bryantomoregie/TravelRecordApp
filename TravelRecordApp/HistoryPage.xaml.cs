@@ -25,6 +25,7 @@ namespace TravelRecordApp
             SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation);
             conn.CreateTable<Post>();
             var posts = conn.Table<Post>().ToList();
+            postListView.ItemsSource = posts;
             conn.Close();
         }
     }
