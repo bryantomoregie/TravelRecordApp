@@ -5,5 +5,5 @@
              x:Class="TravelRecordApp.MapPage">
     <maps:Map x:Name="locationsMap" HorizontalOptions="FillAndExpand"
               VerticalOptions="FillAndExpand"
-              MapType="Hybrid"/>
+            />
 </ContentPage>
