@@ -22,11 +22,21 @@ namespace TravelRecordApp
         {
             base.OnAppearing();
 
-            SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation);
-            conn.CreateTable<Post>();
-            var posts = conn.Table<Post>().ToList();
-            postListView.ItemsSource = posts;
-            conn.Close();
+            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation)) {
+                conn.CreateTable<Post>();
+                var posts = conn.Table<Post>().ToList();
+                postListView.ItemsSource = posts;
+            } 
+        }
+
+        private void postListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var selectedPost = postListView.SelectedItem as Post;
+
+            if (selectedPost != null)
+            {
+                Navigation.PushAsync(new PostDetailPage(selectedPost));
+            }
         }
     }
 }
