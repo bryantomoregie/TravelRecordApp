@@ -29,7 +29,7 @@ namespace TravelRecordApp.iOS
             string folderPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "..", "Library");
             string fullPath = Path.Combine(folderPath, dbName);
 
-            LoadApplication(new App());
+            LoadApplication(new App(fullPath));
 
             return base.FinishedLaunching(app, options);
         }
