@@ -38,5 +38,9 @@
 	<string>We need access to your location to improve app experience</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>LaunchScreen</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>We just need it</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>We just need it</string>
 </dict>
 </plist>
