@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using System.IO;
+using Plugin.Permissions;
 
 namespace TravelRecordApp.Droid
 {
@@ -24,6 +25,9 @@ namespace TravelRecordApp.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             Xamarin.FormsMaps.Init(this, savedInstanceState);
 
+            //Plugin.CurrentActivity.CrossCurrentAvtivity.Current.Init(this, savedInstanceState);
+            //Plugin.
+
             string dbName = "travel_db.sqlite";
             string folderPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             string fullPath = Path.Combine(folderPath, dbName);
@@ -33,7 +37,7 @@ namespace TravelRecordApp.Droid
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-
+            //PermissionImplementation.Current.OnRequestPermissionResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
