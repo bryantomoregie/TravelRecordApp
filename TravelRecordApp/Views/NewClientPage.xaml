@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TravelRecordApp.Views.NewClientPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save"
+                     Clicked="ToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout x:Name="containerStackLayout">
+            <Entry x:Name="nameEntry" 
+                   Text="{Binding Name, Mode=TwoWay}"
+                 Placeholder="Name"/>
+            <Entry x:Name="emailEntry" 
+                   Text="{Binding Email, Mode=TwoWay}"
+                 Placeholder="Email"/>
+            <Entry x:Name="phoneEntry" 
+                   Text="{Binding Phone, Mode=TwoWay}"
+                 Placeholder="Phone"/>
+            <Entry x:Name="addressEntry" 
+                   Text="{Binding Address, Mode=TwoWay}"
+                 Placeholder="Address"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

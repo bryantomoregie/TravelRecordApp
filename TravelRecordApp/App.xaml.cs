@@ -1,4 +1,5 @@
 ﻿using System;
+using TravelRecordApp.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +12,7 @@ namespace TravelRecordApp
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         public App(string databaseLocation)
@@ -20,7 +21,7 @@ namespace TravelRecordApp
 
             DatabaseLocation = databaseLocation;
 
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new LoginPage());
 
             
         }
