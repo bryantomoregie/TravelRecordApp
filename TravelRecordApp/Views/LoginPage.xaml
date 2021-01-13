@@ -10,6 +10,7 @@
                Placeholder="Email Address"
                Keyboard="Email"/>
         <Entry x:Name="passwordEntry" 
+                Text="{Binding Password, Mode=TwoWay}"
                Placeholder="Password"
                IsPassword="True"/>
         <Button x:Name="LoginButton"

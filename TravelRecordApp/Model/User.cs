@@ -1,18 +1,69 @@
 ﻿using SQLite;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace TravelRecordApp.Model
 {
-    class User
+    public class User : INotifyPropertyChanged
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        private string id;
+        public string Id
+        {
+            get { return id; }
+            set
+            {
+                id = value;
+                OnPropertyChanged("Id");
+            }
+        }
 
-        public string Email { get; set; }
+        private string name;
 
-        public string Password { get; set; }
+        public string Name
+        {
+            get { return name; }
+            set 
+            { 
+                name = value;
+                OnPropertyChanged("Name");
+            }
+        }
+
+
+        private string email;
+
+        public string Email
+        {
+            get { return email; }
+            set
+            {
+                email = value;
+                OnPropertyChanged("Email");
+            }
+        }
+
+        private string password;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public string Password
+        {
+            get { return password; }
+            set
+            {
+                password = value;
+                OnPropertyChanged("Password");
+            }
+        }
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
 
         public static void Insert(User user)
         {
@@ -27,6 +78,21 @@ namespace TravelRecordApp.Model
                 //}
                 //else
                 //    DisplayAlert("Failure", "Failed to add client", "Ok");
+            }
+        }
+
+        public static bool Login(string email, string password)
+        {
+            bool isEmailEmpty = string.IsNullOrEmpty(email);
+            bool isPasswordEmpty = string.IsNullOrEmpty(password);
+
+            if (isEmailEmpty || isPasswordEmpty)
+            {
+                return false; 
+            }
+            else
+            {
+                return true;
             }
         }
     }

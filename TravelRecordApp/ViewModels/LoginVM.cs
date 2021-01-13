@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using TravelRecordApp.Model;
 using TravelRecordApp.ViewModels.Commands;
 using TravelRecordApp.Views;
 
@@ -9,26 +10,46 @@ namespace TravelRecordApp.ViewModels
 {
     public class LoginVM : INotifyPropertyChanged
     {
+
+        private User user;
+
+        public User User
+        {
+            get { return user; }
+            set
+            {
+                user = value;
+                OnPropertyChanged("User");
+            }
+        }
+
         public LoginCommand LoginCommand { get; set; }
         public SignUpCommand SignUpCommand { get; set; }
 
         public LoginVM()
         {
+            User = new User();
             LoginCommand = new LoginCommand(this);
             SignUpCommand = new SignUpCommand(this);
         }
 
-        private string email = string.Empty;
+        private string email;
 
         public string Email
         {
             get { return email; }
-            set 
-            { 
+            set
+            {
                 email = value;
+                User = new User()
+                {
+                    Email = this.Email,
+                    Password = this.Password
+                };
                 OnPropertyChanged("Email");
             }
         }
+
 
         private string password;
 
@@ -37,11 +58,17 @@ namespace TravelRecordApp.ViewModels
         public string Password
         {
             get { return password; }
-            set 
-            { 
+            set
+            {
                 password = value;
+                User = new User()
+                {
+                    Email = this.Email,
+                    Password = this.Password
+                };
                 OnPropertyChanged("Password");
             }
+
         }
 
         private void OnPropertyChanged(string propertyName)
@@ -51,17 +78,12 @@ namespace TravelRecordApp.ViewModels
 
         public void Login()
         {
-            bool isEmailEmpty = string.IsNullOrEmpty(email);
-            bool isPasswordEmpty = string.IsNullOrEmpty(password);
+            bool canLogin = User.Login(User.Email, User.Password);
 
-            if (isEmailEmpty || isPasswordEmpty)
-            {
-                App.Current.MainPage.DisplayAlert("Error", "Try Again", "Ok");
-            }
-            else
-            {
+            if (canLogin)
                 App.Current.MainPage.Navigation.PushAsync(new HomePage());
-            }
+            else
+                App.Current.MainPage.DisplayAlert("Error", "Try again", "Ok");
         }
 
         public void Register()
