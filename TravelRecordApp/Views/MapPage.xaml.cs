@@ -1,16 +1,15 @@
-﻿
-using Plugin.Geolocator;
+﻿using Plugin.Geolocator;
 using Plugin.Geolocator.Abstractions;
 using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
-
-namespace TravelRecordApp
+namespace TravelRecordApp.Views
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MapPage : ContentPage
     {
-
         private bool hasLocationPermission = false;
         public MapPage()
         {
@@ -49,7 +48,6 @@ namespace TravelRecordApp
             {
                 await DisplayAlert("Error", e.Message, "Ok");
             }
-
         }
 
         protected override async void OnAppearing()
@@ -97,5 +95,4 @@ namespace TravelRecordApp
         }
 
     }
-
 }
