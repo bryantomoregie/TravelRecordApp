@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
 
 namespace TravelRecordApp.Model
@@ -81,19 +82,57 @@ namespace TravelRecordApp.Model
             }
         }
 
+        //public static bool Login(string email, string password)
+        //{
+        //    bool isEmailEmpty = string.IsNullOrEmpty(email);
+        //    bool isPasswordEmpty = string.IsNullOrEmpty(password);
+
+        //    if (isEmailEmpty || isPasswordEmpty)
+        //    {
+        //        return false; 
+        //    }
+        //    else
+        //    {
+        //        return true;
+        //    }
+        //}
+
         public static bool Login(string email, string password)
         {
-            bool isEmailEmpty = string.IsNullOrEmpty(email);
-            bool isPasswordEmpty = string.IsNullOrEmpty(password);
+            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+            {
+                
+                var userTable = conn.Table<User>().ToList();
+                try
+                {
+                    var userSU = (from u in userTable
+                                  where u.Email == email
+                                  select u).Single();
+                    if(userSU.Password != password)
+                    {
+                        return false;
+                    }
 
-            if (isEmailEmpty || isPasswordEmpty)
-            {
-                return false; 
-            }
-            else
-            {
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+               
+
+               
+
                 return true;
             }
         }
     }
 }
+
+/*
+ * This will be a login method in the User class. Each user can login!!!
+ I need to get the table that will represent the user table in the db
+I need to use LINQ to query that table and get the email that matches 
+Then see if the password matches the email 
+If true, return true. If false, return false.
+ */
