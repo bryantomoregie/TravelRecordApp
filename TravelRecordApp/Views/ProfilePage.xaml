@@ -4,7 +4,8 @@
              x:Class="TravelRecordApp.Views.ProfilePage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to P!"
+            <Button Text="Get Location" Clicked="Button_Clicked"/>
+            <Label x:Name="LabelLocation"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>

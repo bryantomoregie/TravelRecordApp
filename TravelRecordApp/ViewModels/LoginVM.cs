@@ -82,6 +82,7 @@ namespace TravelRecordApp.ViewModels
 
             if (canLogin)
                 App.Current.MainPage.Navigation.PushAsync(new HomePage());
+                //App.Current.MainPage.Navigation.PushAsync(new HomePage());
             else
                 App.Current.MainPage.DisplayAlert("Error", "Try again", "Ok");
         }
