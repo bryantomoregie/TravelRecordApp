@@ -59,12 +59,21 @@ namespace TravelRecordApp.Model
             }
         }
 
+        public User()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+            {
+                conn.CreateTable<User>();
+            }
+        }
+
         private void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
+  
 
         public static void Insert(User user)
         {
@@ -72,47 +81,39 @@ namespace TravelRecordApp.Model
             {
                 conn.CreateTable<User>();
                 int rows = conn.Insert(user);
-
             }
         }
 
       
-        public static bool Login(string email, string password)
+        public static string Login(string email, string password)
         {
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             {
-                
+
                 var userTable = conn.Table<User>().ToList();
+                
                 try
                 {
-                    var userSU = (from u in userTable
+                   var userSU = (from u in userTable
                                   where u.Email == email
                                   select u).Single();
                     if(userSU.Password != password)
                     {
-                        return false;
+                        return "wrongPassword";
                     }
 
-                    return true;
+                    return "login";
                 }
                 catch
                 {
-                    return false;
+                    return "nonExistent";
                 }
-               
-
-               
-
-                return true;
             }
         }
     }
 }
 
 /*
- * This will be a login method in the User class. Each user can login!!!
- I need to get the table that will represent the user table in the db
-I need to use LINQ to query that table and get the email that matches 
-Then see if the password matches the email 
-If true, return true. If false, return false.
+ if user doesnt exist, send alert saying user doesnt exist. If user does exist,
+but password is wrong, send the other error. 
  */

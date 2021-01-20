@@ -78,13 +78,14 @@ namespace TravelRecordApp.ViewModels
 
         public void Login()
         {
-            bool canLogin = User.Login(User.Email, User.Password);
+            string canLogin = User.Login(User.Email, User.Password);
 
-            if (canLogin)
+            if (canLogin == "login")
                 App.Current.MainPage.Navigation.PushAsync(new HomePage());
-                //App.Current.MainPage.Navigation.PushAsync(new HomePage());
-            else
-                App.Current.MainPage.DisplayAlert("Error", "Try again", "Ok");
+            if(canLogin == "nonExistent")
+                App.Current.MainPage.DisplayAlert("Error", "User does not exist. Please Sign up.", "Ok");
+            if(canLogin == "wrongPassword")
+                App.Current.MainPage.DisplayAlert("Error", "Wrong Password", "Ok");
         }
 
         public void Register()

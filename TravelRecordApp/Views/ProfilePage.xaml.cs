@@ -22,16 +22,13 @@ namespace TravelRecordApp.Views
         {
             try
             {
-                var location = await Geolocation.GetLastKnownLocationAsync();
-                if(location == null)
+                
+                var location = await Geolocation.GetLocationAsync(new GeolocationRequest
                 {
-                    location = await Geolocation.GetLocationAsync(new GeolocationRequest
-                    {
-                        DesiredAccuracy = GeolocationAccuracy.Medium,
-                        Timeout = TimeSpan.FromSeconds(30)
-                    });
-                }
-
+                    DesiredAccuracy = GeolocationAccuracy.Medium,
+                    Timeout = TimeSpan.FromSeconds(30)
+                });
+                
                 if(location == null)
                 {
                     LabelLocation.Text = "No GPS";
