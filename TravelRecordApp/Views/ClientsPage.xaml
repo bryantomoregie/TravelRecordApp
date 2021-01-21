@@ -4,11 +4,13 @@
              x:Class="TravelRecordApp.Views.ClientsPage">
     <ListView x:Name="clientListView"
               ItemsSource="{Binding Clients, Mode=TwoWay}"
-              ItemSelected="clientListView_ItemSelected">
+              >
         <ListView.ItemTemplate>
             <DataTemplate>
-                <TextCell Text="{Binding Name, Mode=TwoWay}"/>
-            </DataTemplate>
+                <TextCell 
+                    Text="{Binding Name, Mode=TwoWay}"
+                    CommandParameter="{Binding ClientViewCommand}"/>
+                </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
 </ContentPage>

@@ -36,14 +36,14 @@ namespace TravelRecordApp.Views
 
         }
 
-        private void clientListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            var selectedClient = clientListView.SelectedItem as Client;
+        //private void clientListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        //{
+        //    var selectedClient = clientListView.SelectedItem as Client;
 
-            if (selectedClient != null)
-            {
-                Navigation.PushAsync(new ClientDetailPage(selectedClient));
-            }
-        }
+        //    if (selectedClient != null)
+        //    {
+        //        Navigation.PushAsync(new ClientDetailPage(selectedClient));
+        //    }
+        //}
     }
 }
