@@ -57,7 +57,7 @@ namespace TravelRecordApp.Model
             set 
             { 
                 phone = value;
-                OnPropertyChanged("Phone");
+                 OnPropertyChanged("Phone");
             }
         }
 
