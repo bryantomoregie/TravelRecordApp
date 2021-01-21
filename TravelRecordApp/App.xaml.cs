@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 using TravelRecordApp.Views;
-using Windows.Storage;
+//using Windows.Storage;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,11 +14,11 @@ namespace TravelRecordApp
        
         public App()
         {
-            InitializeComponent();
-            string documentPath = ApplicationData.Current.LocalFolder.Path;
-            string path = Path.Combine(documentPath, "travel_db.sqlite");
-            DatabaseLocation = path;
-            MainPage = new NavigationPage(new LoginPage());
+            //InitializeComponent();
+            //string documentPath = ApplicationData.Current.LocalFolder.Path;
+            //string path = Path.Combine(documentPath, "travel_db.sqlite");
+            //DatabaseLocation = path;
+            //MainPage = new NavigationPage(new LoginPage());
         }
 
         public App(string databaseLocation)

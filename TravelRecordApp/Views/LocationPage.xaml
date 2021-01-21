@@ -1,11 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TravelRecordApp.Views.ProfilePage">
+             xmlns:local="clr-namespace:TravelRecordApp.ViewModels"
+             x:Class="TravelRecordApp.Views.LocationPage">
+    <ContentPage.BindingContext>
+        <local:LocationVM/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Button Text="Get Location" Clicked="Button_Clicked"/>
+            <Button Text="Get Location" 
+                    Command="{Binding LocationCommand}"/>
             <Label x:Name="LabelLocation"
+                   Text="{Binding Location, Mode=OneWay}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>

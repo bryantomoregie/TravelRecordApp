@@ -1,25 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TravelRecordApp.ViewModels;
-using TravelRecordApp.Views;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace TravelRecordApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class LocationPage : ContentPage
     {
-        LoginVM viewModel;
-        public LoginPage()
+        LocationVM viewModel;
+        public LocationPage()
         {
             InitializeComponent();
-            viewModel = new LoginVM();
-            BindingContext = viewModel;
+            //viewModel = new LocationVM();
+            //BindingContext = viewModel;
         }
 
+        
     }
 }
