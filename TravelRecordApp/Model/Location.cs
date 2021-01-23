@@ -33,9 +33,9 @@ namespace TravelRecordApp.Model
         }
 
 
-        private DateTimeOffset dateTime;
+        private DateTime dateTime;
 
-        public DateTimeOffset DateTime
+        public DateTime DateTime
         {
             get { return dateTime; }
             set 
@@ -44,7 +44,7 @@ namespace TravelRecordApp.Model
             }
         }
 
-        public DateTimeOffset DateTime1 { get => dateTime; set => dateTime = value; }
+        //public DateTimeOffset DateTime1 { get => dateTime; set => dateTime = value; }
 
         private void OnPropertyChanged(string propertyName)
         {

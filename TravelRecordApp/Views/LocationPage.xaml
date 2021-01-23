@@ -8,12 +8,13 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Button Text="Get Location" 
-                    Command="{Binding LocationCommand}"/>
-            <Label x:Name="LabelLocation"
-                   Text="{Binding Location, Mode=OneWay}"
+           
+           
+            <Label 
+                   Text="{Binding YourLocation, Mode=OneWay}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

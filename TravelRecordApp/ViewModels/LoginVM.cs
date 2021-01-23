@@ -99,7 +99,7 @@ namespace TravelRecordApp.ViewModels
                 {
                     _location.Latitude = location.Latitude;
                     _location.Longitude = location.Longitude;
-                    _location.DateTime = location.Timestamp;
+                    _location.DateTime = DateTime.Now;
                     Model.Location.Insert(_location);
                 }
             }
@@ -114,8 +114,13 @@ namespace TravelRecordApp.ViewModels
             string canLogin = User.Login(User.Email, User.Password);
 
             if (canLogin == "login")
+            {
                 GetLocation();
-            App.Current.MainPage.Navigation.PushAsync(new HomePage());
+                Email = String.Empty;
+                Password = String.Empty;
+                App.Current.MainPage.Navigation.PushAsync(new HomePage());
+            }
+                
             if(canLogin == "nonExistent")
                 App.Current.MainPage.DisplayAlert("Error", "User does not exist. Please Sign up.", "Ok");
             if(canLogin == "wrongPassword")

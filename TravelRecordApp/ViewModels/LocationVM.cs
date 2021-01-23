@@ -1,5 +1,7 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Text;
@@ -11,54 +13,36 @@ namespace TravelRecordApp.ViewModels
     public class LocationVM : INotifyPropertyChanged
 
     {
-        public LocationCommand LocationCommand { get; set; }
+        public List<Location> Locations { get; set; }
 
         public LocationVM()
         {
-            LocationCommand = new LocationCommand(this);
-        }
-
-        private string location_;
-
-        public string Location
-        {
-            get { return location_; }
-            set
+             
+            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             {
-                location_ = value;
-                OnPropertyChanged("Location");
+                 Locations =  conn.Table<Location>().ToList();
             }
+            
         }
+
+
+ 
+
+        public string YourLocation
+        {
+            get { return $"Longitude: {Locations[Locations.Count - 1].Longitude} Latitude: {Locations[Locations.Count - 1].Latitude}"; }
+        }
+
+       
+
+        
+
+
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public async void GetLocation()
-        {
-            try
-            {
-
-                var location = await Geolocation.GetLocationAsync(new GeolocationRequest
-                {
-                    DesiredAccuracy = GeolocationAccuracy.Medium,
-                    Timeout = TimeSpan.FromSeconds(30)
-                });
-
-                if (location == null)
-                {
-                    location_ = "No GPS";
-                    this.Location = location_;
-                }
-                else
-                {
-                    location_ = $"Latitude: {location.Latitude} Longitude: {location.Longitude}";
-                    this.Location = location_;
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Something is wrong: {ex}");
-            }
-        }
+     
 
         private void OnPropertyChanged(string propertyName)
         {

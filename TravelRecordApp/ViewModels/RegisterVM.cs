@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Text;
 using TravelRecordApp.Model;
 using TravelRecordApp.ViewModels.Commands;
+using TravelRecordApp.Views;
 
 namespace TravelRecordApp.ViewModels
 {
@@ -73,6 +74,8 @@ namespace TravelRecordApp.ViewModels
         public void Register()
         {
             User.Insert(user);
+            App.Current.MainPage.DisplayAlert("Success", "Account has been created!", "Ok");
+            App.Current.MainPage.Navigation.PushAsync(new LoginPage());
         }
     }
 }
