@@ -26,6 +26,7 @@ namespace TravelRecordApp.Views
            
             Client.Insert(client);
             DisplayAlert("Success", "Client successfully added", "Ok");
+            App.Current.MainPage.Navigation.PushAsync(new HomePage());
         }
 
     }

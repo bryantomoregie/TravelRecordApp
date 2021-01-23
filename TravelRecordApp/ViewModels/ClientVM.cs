@@ -1,110 +1,116 @@
 ﻿using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
+using TravelRecordApp.Model;
+using TravelRecordApp.ViewModels.Commands;
+using TravelRecordApp.Views;
 
-namespace TravelRecordApp.Model
+namespace TravelRecordApp.ViewModels
 {
-   public class Client : INotifyPropertyChanged 
+    public class ClientVM : INotifyPropertyChanged 
     {
-    
+
         private int id;
         [PrimaryKey, AutoIncrement]
-        public int Id 
+        public int Id
         {
             get { return id; }
-            set 
-            { 
+            set
+            {
                 id = value;
                 OnPropertyChanged("Id");
             }
         }
-
 
         private string name;
 
         public string Name
         {
             get { return name; }
-            set 
-            { 
+            set
+            {
                 name = value;
                 OnPropertyChanged("Name");
             }
         }
-
 
         private string email;
 
         public string Email
         {
             get { return email; }
-            set 
-            { 
+            set
+            {
                 email = value;
                 OnPropertyChanged("Email");
             }
         }
-
 
         private string phone;
 
         public string Phone
         {
             get { return phone; }
-            set 
-            { 
+            set
+            {
                 phone = value;
-                 OnPropertyChanged("Phone");
+                OnPropertyChanged("Phone");
             }
         }
-
 
         private string address;
 
         public string Address
         {
             get { return address; }
-            set 
-            { 
+            set
+            {
                 address = value;
                 OnPropertyChanged("Address");
             }
         }
 
+        public ObservableCollection<Client> Clients { get; set; }
+        public ClientViewCommand ClientViewCommand { get; set; }
+
+        private Client client;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public static void Insert(Client client)
+        public ClientVM()
         {
-
-            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
-            {
-                conn.CreateTable<Client>();
-                int rows = conn.Insert(client);
-
-                //if (rows > 0)
-                //{
-                //    DisplayAlert("Success", "Client successfully added", "Ok");
-                //}
-                //else
-                //    DisplayAlert("Failure", "Failed to add client", "Ok");
-            }
-
+            client = new Client();
+            Clients = new ObservableCollection<Client>();
+            ClientViewCommand = new ClientViewCommand(this);
         }
 
-        public static List<Client> Read()
+
+        public bool ClientList()
         {
-            List<Client> clients;
-            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+            try
             {
-                conn.CreateTable<Client>();
-                clients = conn.Table<Client>().ToList();
-               
+                var clients = Client.Read();
+                if (clients != null)
+                {
+                    Clients.Clear();
+                    foreach (var client in clients)
+                        Clients.Add(client);
+                }
+                return true;
             }
-            return clients;
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public void ClientDetails()
+        {
+            App.Current.MainPage.Navigation.PushAsync(new ClientDetailPage(client));
         }
 
         private void OnPropertyChanged(string propertyName)
@@ -112,6 +118,4 @@ namespace TravelRecordApp.Model
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-
-
 }

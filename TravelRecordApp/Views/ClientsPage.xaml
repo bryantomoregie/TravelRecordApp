@@ -3,11 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TravelRecordApp.Views.ClientsPage">
     <ListView x:Name="clientListView"
-              ItemSelected="clientListView_ItemSelected">
+              ItemsSource="{Binding Clients, Mode=TwoWay}"
+              >
         <ListView.ItemTemplate>
             <DataTemplate>
-                <TextCell Text="{Binding Name}"/>
-            </DataTemplate>
+                <TextCell 
+                    Text="{Binding Name, Mode=TwoWay}"
+                    CommandParameter="{Binding ClientViewCommand}"/>
+                </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
 </ContentPage>

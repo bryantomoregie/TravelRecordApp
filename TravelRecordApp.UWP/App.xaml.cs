@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,6 +8,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -26,11 +28,18 @@ namespace TravelRecordApp.UWP
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
+
+       
         public App()
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            var databasePath = Path.GetRandomFileName();
+            var conn = new SQLiteAsyncConnection(databasePath);
+
         }
+
+
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points

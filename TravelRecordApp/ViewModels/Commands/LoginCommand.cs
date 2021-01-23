@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
+using TravelRecordApp.Model;
 
 namespace TravelRecordApp.ViewModels.Commands
 {
@@ -18,6 +19,16 @@ namespace TravelRecordApp.ViewModels.Commands
 
         public bool CanExecute(object parameter)
         {
+            //var user = (User)parameter;
+
+            //if(user == null)
+            //{
+            //    return false;
+            //}
+            //if(string.IsNullOrEmpty(user.Email) || string.IsNullOrEmpty(user.Password))
+            //{
+            //    return false;
+            //}
             return true; //105 7:27
         }
 

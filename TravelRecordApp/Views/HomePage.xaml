@@ -9,7 +9,6 @@
         <!--Can only bind to properties-->
     </TabbedPage.ToolbarItems>
     <local:ClientsPage Title="Client"/>
-    <local:MapPage Title="Maps"/>
-    <local:ProfilePage Title="Profile"/>
+    <local:LocationPage Title="Location"/>
 </TabbedPage>
 
