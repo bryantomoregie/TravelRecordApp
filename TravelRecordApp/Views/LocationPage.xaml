@@ -8,8 +8,10 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-           
-           
+
+            <Label Text="Your Current Location that was saved to DB"
+                    VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"/>
             <Label 
                    Text="{Binding YourLocation, Mode=OneWay}"
                 VerticalOptions="CenterAndExpand" 
