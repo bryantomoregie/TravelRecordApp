@@ -93,7 +93,7 @@ namespace TravelRecordApp.ViewModels
 
                 if (location == null)
                 {
-                    await App.Current.MainPage.DisplayAlert("Error", "Please set location", "Ok");
+                   App.Current.MainPage.DisplayAlert("Error", "Please set location", "Ok");
                 }
                 else
                 {
