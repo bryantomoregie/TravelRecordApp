@@ -29,21 +29,8 @@ namespace TravelRecordApp.Views
 
             viewModel.ClientList();
 
-            //List<Client> clients = Client.Read();
-
-            //clientListView.ItemsSource = clients;
-
 
         }
 
-        //private void clientListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        //{
-        //    var selectedClient = clientListView.SelectedItem as Client;
-
-        //    if (selectedClient != null)
-        //    {
-        //        Navigation.PushAsync(new ClientDetailPage(selectedClient));
-        //    }
-        //}
     }
 }

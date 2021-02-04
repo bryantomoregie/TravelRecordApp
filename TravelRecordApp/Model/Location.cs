@@ -18,6 +18,7 @@ namespace TravelRecordApp.Model
             set 
             {
                 longitude = value;
+                OnPropertyChanged("Longitude");
             }
         }
 
@@ -28,7 +29,8 @@ namespace TravelRecordApp.Model
             get { return latitude; }
             set 
             { 
-                latitude = value; 
+                latitude = value;
+                OnPropertyChanged("Latitude");
             }
         }
 

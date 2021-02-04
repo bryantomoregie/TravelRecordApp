@@ -35,7 +35,7 @@ namespace TravelRecordApp.Views
 
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             {
-                conn.CreateTable<Post>();
+                conn.CreateTable<Client>();
                 int rows = conn.Update(selectedClient);
 
                 if (rows > 0)
@@ -51,7 +51,7 @@ namespace TravelRecordApp.Views
         {
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             {
-                conn.CreateTable<Post>();
+                conn.CreateTable<Client>();
                 int rows = conn.Delete(selectedClient);
 
                 if (rows > 0)
