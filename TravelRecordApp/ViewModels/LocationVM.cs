@@ -128,8 +128,8 @@ namespace TravelRecordApp.ViewModels
                 }
                 else
                 {
-                    latitude = location.Latitude;
-                    longitude = location.Longitude;
+                    Latitude = location.Latitude;
+                    Longitude = location.Longitude;
                     dateTime = DateTime.Now;
                     Model.Location.Insert(Location);
                 }
