@@ -31,8 +31,9 @@ namespace TravelRecordApp.Droid
             string dbName = "travel_db.sqlite";
             string folderPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             string fullPath = Path.Combine(folderPath, dbName);
+            Android_SQLite android_SQLite = new Android_SQLite();
            
-            LoadApplication(new App(fullPath));
+            LoadApplication(new App(android_SQLite.GetConnection()));
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
