@@ -5,12 +5,10 @@
     <ListView x:Name="clientListView"
               ItemsSource="{Binding Clients, Mode=TwoWay}"
               >
-        <ListView.ItemTemplate>
+        <ListView.ItemTemplate >
             <DataTemplate>
-                <TextCell 
-                    Text="{Binding Name, Mode=TwoWay}"
-                    CommandParameter="{Binding ClientViewCommand}"/>
-                </DataTemplate>
+                <TextCell Text="{Binding Name, Mode=TwoWay}" CommandParameter="{Binding ClientViewCommand}" />
+            </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
 </ContentPage>

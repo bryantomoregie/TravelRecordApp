@@ -84,13 +84,6 @@ namespace TravelRecordApp.Model
             {
                 conn.CreateTable<Client>();
                 int rows = conn.Insert(client);
-
-                //if (rows > 0)
-                //{
-                //    DisplayAlert("Success", "Client successfully added", "Ok");
-                //}
-                //else
-                //    DisplayAlert("Failure", "Failed to add client", "Ok");
             }
 
         }

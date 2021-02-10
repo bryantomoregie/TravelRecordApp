@@ -28,6 +28,7 @@ namespace TravelRecordApp.ViewModels
         public LoginCommand LoginCommand { get; set; }
         public SignUpCommand SignUpCommand { get; set; }
         public Model.Location _location { get; set; }
+        public LocationVM LocationVM { get; set; }
 
         public LoginVM()
         {
@@ -35,6 +36,7 @@ namespace TravelRecordApp.ViewModels
             _location = new Model.Location();
             LoginCommand = new LoginCommand(this);
             SignUpCommand = new SignUpCommand(this);
+            //LocationVM = new LocationVM(); //Called FIRST before location code behind
         }
 
         private string email;
@@ -93,14 +95,15 @@ namespace TravelRecordApp.ViewModels
 
                 if (location == null)
                 {
-                    await App.Current.MainPage.DisplayAlert("Error", "Please set location", "Ok");
+                    App.Current.MainPage.DisplayAlert("Error", "Please set location", "Ok");
                 }
                 else
                 {
                     _location.Latitude = location.Latitude;
                     _location.Longitude = location.Longitude;
                     _location.DateTime = DateTime.Now;
-                    Model.Location.Insert(_location);
+                    //LocationVM.CurrentLocation(_location);
+                    //Model.Location.Insert(_location);
                 }
             }
             catch (Exception ex)
@@ -115,7 +118,7 @@ namespace TravelRecordApp.ViewModels
 
             if (canLogin == "login")
             {
-                GetLocation();
+               // GetLocation();
                 Email = String.Empty;
                 Password = String.Empty;
                 App.Current.MainPage.Navigation.PushAsync(new HomePage());

@@ -18,10 +18,10 @@ namespace TravelRecordApp.Views
         public LocationPage()
         {
             InitializeComponent();
-            //viewModel = new LocationVM();
-            //BindingContext = viewModel;
+            viewModel = new LocationVM(); //this is now hit second
+            BindingContext = viewModel; 
         }
 
-        
+
     }
 }

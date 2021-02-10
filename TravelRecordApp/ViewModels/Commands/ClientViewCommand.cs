@@ -14,7 +14,7 @@ namespace TravelRecordApp.ViewModels.Commands
 
         public ClientViewCommand(ClientVM viewModel)
         {
-            ViewModel = ViewModel;
+            ViewModel = viewModel;
         }
 
         public bool CanExecute(object parameter)

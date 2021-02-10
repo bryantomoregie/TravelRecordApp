@@ -25,7 +25,8 @@ namespace TravelRecordApp.UWP
         public MainPage()
         {
             this.InitializeComponent();
-            LoadApplication(new TravelRecordApp.App());
+            Windows_SQLite windows_SQLite = new Windows_SQLite();
+            LoadApplication(new TravelRecordApp.App(windows_SQLite.GetConnection()));
         }
     }
 }
