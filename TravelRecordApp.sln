@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelRecordApp", "TravelRe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelRecordApp.UWP", "TravelRecordApp.UWP\TravelRecordApp.UWP.csproj", "{A6339657-1650-47BB-98B9-57B463FFFE37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelRecordApp.Standard", "TravelRecordApp.Standard\TravelRecordApp.Standard.csproj", "{A133CE59-37E1-44C6-8460-95A33665AE5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelRecordApp.Standard", "TravelRecordApp.Standard\TravelRecordApp.Standard.csproj", "{A133CE59-37E1-44C6-8460-95A33665AE5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

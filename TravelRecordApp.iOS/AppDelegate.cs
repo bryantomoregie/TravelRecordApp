@@ -29,8 +29,9 @@ namespace TravelRecordApp.iOS
             string dbName = "travel_db.sqlite";
             string folderPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "..", "Library");
             string fullPath = Path.Combine(folderPath, dbName);
+            IOS_SQLite iOS_SQLite = new IOS_SQLite();
 
-            LoadApplication(new App(fullPath));
+            LoadApplication(new App(iOS_SQLite.GetConnection()));
 
             return base.FinishedLaunching(app, options);
         }

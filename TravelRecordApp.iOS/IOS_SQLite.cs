@@ -12,7 +12,7 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(IOS_SQLite))]
 namespace TravelRecordApp.iOS
 {
-    class IOS_SQLite
+    class IOS_SQLite : ISQLite
     {
         public SQLiteConnection GetConnection()
         {
